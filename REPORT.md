@@ -34,9 +34,9 @@
 ---
 
 ## 1. Introduction
-This report documents the design, architecture, and comprehensive testing suite for the Universal Smart Parking Billing System (SPBS). Campus parking management frequently involves distinct pricing zones, varying stall features (such as block-heater plug-in outlets), and duration limits. Current physical parking meters are location-bound, creating inconvenience for users who must walk back to specific lots to extend parking time. 
+This report documents the design, architecture, and comprehensive testing suite for the Universal Smart Parking Billing System (SPBS). Campus parking system utilizes various distinct parking zones, including underground parkades, standard surface lots, economy outer lots, and block-heater electrical plug equipped lots. Currently, physical terminal meters are location-bound. People who do not use a mobile app and need to extend their parking duration have to physically walk back to the specific terminal meter tied to their parking lot to pay, causing significant inconvenience - especially during harsh weathers or while attending class.
 
-The SPBS project addresses this issue by providing a centralized Java terminal application using Model-View-Controller (MVC) architecture. The focus of this project is to apply software testing methodologies—including path testing, data flow testing, integration testing, boundary value analysis, decision tables, state transitions, and use cases—using JUnit to ensure software reliability.
+The SPBS project addresses this issue by providing a centralized Java terminal application using Model-View-Controller (MVC) architecture. The focus of this project is to apply software testing methodologies including path testing, data flow testing, integration testing, boundary value testing, equivalence class testing, decision tables testing, state transition testing, and use case testing, using JUnit test suites to ensure software reliability.
 
 ---
 

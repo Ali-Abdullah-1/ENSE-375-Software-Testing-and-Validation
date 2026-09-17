@@ -1,4 +1,4 @@
-# University of Regina - ENSE 375 – Software Testing and Validation
+# University of Regina - ENSE 375 - Software Testing and Validation
 ## Universal Smart Parking Billing System (SPBS)
 
 **Team Members:**

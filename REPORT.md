@@ -7,6 +7,32 @@
 
 ---
 
+## Table of Contents
+1. [Introduction](#1-introduction)
+2. [Design Problem](#2-design-problem)
+   * [2.1 Problem Definition](#21-problem-definition)
+   * [2.2 Design Requirements](#22-design-requirements)
+     * [2.2.1 Functions](#221-functions)
+     * [2.2.2 Objectives](#222-objectives)
+     * [2.2.3 Constraints](#223-constraints)
+3. [Solution](#3-solution)
+   * [3.1 Solution 1](#31-solution-1)
+   * [3.2 Solution 2](#32-solution-2)
+   * [3.3 Final Solution](#33-final-solution)
+     * [3.3.1 Components](#331-components)
+     * [3.3.2 Environmental, Societal, Safety, and Economic Considerations](#332-environmental-societal-safety-and-economic-considerations)
+     * [3.3.3 Test Cases and Results](#333-test-cases-and-results)
+     * [3.3.4 Limitations](#334-limitations)
+4. [Team Work](#4-team-work)
+   * [4.1 Meeting 1](#41-meeting-1)
+   * [4.2 Meeting 2](#42-meeting-2)
+5. [Project Management](#5-project-management)
+6. [Conclusion and Future Work](#6-conclusion-and-future-work)
+7. [References](#7-references)
+8. [Appendix](#8-appendix)
+
+---
+
 ## 1. Introduction
 This report documents the design, architecture, and comprehensive testing suite for the Universal Smart Parking Billing System (SPBS). Campus parking management frequently involves distinct pricing zones, varying stall features (such as block-heater plug-in outlets), and duration limits. Current physical parking meters are location-bound, creating inconvenience for users who must walk back to specific lots to extend parking time. 
 

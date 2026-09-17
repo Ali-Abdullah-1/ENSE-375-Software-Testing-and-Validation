@@ -36,16 +36,16 @@
 ---
 
 ## 1. Introduction
-This report documents the design, architecture, and comprehensive testing suite for the Universal Smart Parking Billing System (SPBS). Campus parking system utilizes various distinct parking zones, including underground parkades, standard surface lots, economy outer lots, and block-heater electrical plug equipped lots. Currently, physical terminal meters are location-bound. People who do not use a mobile app and need to extend their parking duration have to physically walk back to the specific terminal meter tied to their parking lot to pay, causing significant inconvenience - especially during harsh weathers or while attending class.
+This report documents the design, architecture, and comprehensive testing suites for the Smart Parking Billing System (SPBS). Campus parking system utilizes various distinct parking zones, including underground parkades, standard surface lots, economy outer lots, and block-heater electrical plug equipped lots, that are tied to specific time duration as well. Current physical terminal meters are location-bound which creates an inconvenience for people as they are forced to walk back to the specific lot to extend parking time.
 
-The SPBS project addresses this issue by providing a centralized Java terminal application using Model-View-Controller (MVC) architecture. The focus of this project is to apply software testing methodologies including path testing, data flow testing, integration testing, boundary value testing, equivalence class testing, decision tables testing, state transition testing, and use case testing, using JUnit test suites to ensure software reliability.
+The SPBS project addresses this issue by providing a centralized Java terminal application using Model-View-Controller (MVC) architecture. The focus of this project is to apply software testing methodologies including path testing, data flow testing, integration testing, boundary value testing, equivalence class testing, decision tables testing, state transition testing, and use case testing, using JUnit test suites to ensure reliability.
 
 ---
 
 ## 2. Design Problem
 
 ### 2.1 Problem Definition
-Campus parking management utilizes various distinct parking zones, including underground parkades, standard surface lots, economy outer lots, and outdoor stalls equipped with block-heater electrical plugs. Currently, physical terminal meters are location-bound. Drivers who do not use a mobile app and need to extend their parking duration have to physically walk back to the specific terminal meter tied to their parking lot to pay, causing significant inconvenience—especially during harsh weather or while attending class. 
+Campus parking management utilizes various distinct parking zones, including underground parkades, standard surface lots, economy outer lots, and block-heater electrical plug equipped lots. Currently, physical terminal meters are location-bound. People who do not use a mobile app and need to extend their parking duration have to physically walk back to the specific terminal meter tied to their parking lot to pay, causing significant inconvenience - especially during harsh weathers or while attending class. 
 
 This project focuses on building a Java terminal application using Model-View-Controller (MVC) architecture to allow cross-zone billing and systematically validate its core business logic using comprehensive JUnit test suites.
 

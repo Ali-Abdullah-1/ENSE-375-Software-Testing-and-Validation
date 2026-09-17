@@ -26,6 +26,8 @@
 4. [Team Work](#4-team-work)
    * [4.1 Meeting 1](#41-meeting-1)
    * [4.2 Meeting 2](#42-meeting-2)
+   * [4.3 Meeting 3](#43-meeting-3)
+   * [4.4 Meeting 4](#44-meeting-4)
 5. [Project Management](#5-project-management)
 6. [Conclusion and Future Work](#6-conclusion-and-future-work)
 7. [References](#7-references)

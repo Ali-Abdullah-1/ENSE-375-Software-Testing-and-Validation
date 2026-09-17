@@ -2,8 +2,8 @@
 ## Universal Smart Parking Billing System (SPBS)
 
 **Team Members:**
-* [Member 1 Name] ([Student ID])
-* [Member 2 Name] ([Student ID])
+* Ali Abdullah - 200518299
+* Abraham Omoregie - 200507536
 
 ---
 

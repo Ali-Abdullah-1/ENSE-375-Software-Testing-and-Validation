@@ -4,8 +4,8 @@
 **Team Members:**
 * Ali Abdullah - 200518299
 * Abraham Omoregie - 200507536
-* Muhammad Shami - 200491628
 * Fairuz Nawar - 200515433
+* Muhammad Shami - 200491628
 
 ---
 
@@ -73,3 +73,20 @@ This project focuses on building a Java terminal application using Model-View-Co
 * **Constraint 3 (Reliability / Access Control):** The system must not allow a ticket duration to be extended beyond the lot's maximum allowable limit (e.g., max 4 hours for underground).
 * **Constraint 4 (Economic / Security):** Unpaid transactions must revert spot status to `EMPTY` or `EXPIRED` within a timeout threshold without applying charges.
 * **Constraint 5 (Sustainability):** The system must track electrical plug usage separately for block-heater stalls to regulate winter energy consumption metrics.
+
+---
+
+## 3. Solution
+In accordance with the iterative engineering design process, multiple software architectural concepts were evaluated to implement the Universal Smart Parking Billing System (SPBS). Each iteration was assessed based on its ability to satisfy system functions, adhere to binary constraints, and support comprehensive automated unit testing using JUnit.
+
+### 3.1 Solution 1: Inflexible Single-Zone Console Application (Base Draft)
+The initial design concept proposed a monolithic Java application where user input, pricing logic, and spot tracking were combined within a single class using static methods. This solution focused exclusively on standard surface lot billing without distinguishing between parking zones or electrical plug usage.
+
+* **Design Description:** A single `Main` class handled terminal prompts, hardcoded fee calculations ($3.00/hour), and basic console output.
+* **Testing Evaluation & Rejection:** From a software testing perspective, this design was rejected due to high code coupling. Because business logic (rate calculations) was intertwined with direct user input/output (`Scanner` and `System.out.println`), writing isolated JUnit unit tests without triggering interactive console prompts was impossible. Furthermore, it failed to support cross-zone extensions or variable pricing tiers.
+
+### 3.2 Solution 2: Flexible Multi-Class Architecture (Updated Draft but Pre-MVC)
+The second iteration improved upon Solution 1 by separating the project into distinct Java classes (`ParkingLot`, `Vehicle`, `Ticket`) and introducing basic multi-zone pricing logic (Underground, Surface, Economy, and Plug-in stalls).
+
+* **Design Description:** Business logic was refactored out of the main loop into helper classes, allowing basic calculations to be invoked programmatically. Cross-zone terminal selection was introduced, allowing drivers to specify their parking zone.
+* **Testing Evaluation & Rejection:** While an improvement, this architecture still lacked a formal Model-View-Controller (MVC) separation. The `ParkingLot` class maintained both data state and user view updates, leading to side effects during state transition tests. Additionally, error handling relied on direct console outputs rather than throwing testable custom exceptions, making automated edge-case verification (such as boundary value time extensions or invalid plate formats) inefficient and brittle. Consequently, a third iteration was required to achieve full testability.

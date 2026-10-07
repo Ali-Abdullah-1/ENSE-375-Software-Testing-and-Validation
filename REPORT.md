@@ -77,12 +77,12 @@ This project focuses on building a Java terminal application using Model-View-Co
 ---
 
 ## 3. Solution
-In accordance with the iterative engineering design process, multiple software architectural concepts were evaluated to implement the Universal Smart Parking Billing System (SPBS). Each iteration was assessed based on its ability to satisfy system functions, adhere to binary constraints, and support comprehensive automated unit testing using JUnit.
+In accordance with the iterative engineering design process, multiple software architectural concepts were evaluated to implement the Smart Parking Billing System (SPBS). Each iteration was assessed based on its ability to satisfy system functions, adhere to binary constraints, and support comprehensive automated unit testing using JUnit.
 
 ### 3.1 Solution 1: Inflexible Single-Zone Console Application (Base Draft)
-The initial design concept proposed a monolithic Java application where user input, pricing logic, and spot tracking were combined within a single class using static methods. This solution focused exclusively on standard surface lot billing without distinguishing between parking zones or electrical plug usage.
+The initial design concept proposed a uniform (inflexible) Java application where user input, pricing logic, and spot tracking were combined within a single class using static methods. This solution focused exclusively on standard surface lot billing without distinguishing between parking zones or electrical plug usage.
 
-* **Design Description:** A single `Main` class handled terminal prompts, hardcoded fee calculations ($3.00/hour), and basic console output.
+* **Design Description:** A single `Main` class handled terminal prompts, hard-coded fee calculations ($3.00/hour), and basic console output.
 * **Testing Evaluation & Rejection:** From a software testing perspective, this design was rejected due to high code coupling. Because business logic (rate calculations) was intertwined with direct user input/output (`Scanner` and `System.out.println`), writing isolated JUnit unit tests without triggering interactive console prompts was impossible. Furthermore, it failed to support cross-zone extensions or variable pricing tiers.
 
 ### 3.2 Solution 2: Flexible Multi-Class Architecture (Updated Draft but Pre-MVC)

@@ -79,13 +79,13 @@ This project focuses on building a Java terminal application using Model-View-Co
 ## 3. Solution
 In accordance with the iterative engineering design process, multiple software architectural concepts were evaluated to implement the Smart Parking Billing System (SPBS). Each iteration was assessed based on its ability to satisfy system functions, adhere to binary constraints, and support comprehensive automated unit testing using JUnit.
 
-### 3.1 Solution 1: Inflexible Single-Zone Console Application (Base Draft)
+### 3.1 Solution 1 - Inflexible Single-Zone Console Application (Base Draft)
 The initial design concept proposed a uniform (inflexible) Java application where user input, pricing logic, and spot tracking were combined within a single class using static methods. This solution focused exclusively on standard surface lot billing without distinguishing between parking zones or electrical plug usage.
 
 * **Design Description:** A single `Main` class handled terminal prompts, hard-coded fee calculations ($3.00/hour), and basic console output.
 * **Testing Evaluation & Rejection:** From a software testing perspective, this design was rejected due to high code coupling (testing perspective) because the price calculation code was directly mixed with different screen prompts. As a result, automated JUnit tests could not test the pricing rules in isolation without getting stuck waiting for a human to type inputs on the keyboard. Furthermore, it failed to support cross-zone extensions or variable pricing tiers.
 
-### 3.2 Solution 2: Flexible Multi-Class Architecture (Updated Draft but Pre-MVC)
+### 3.2 Solution 2 - Flexible Multi-Class Architecture (Updated Draft but Pre-MVC)
 The second iteration improved upon Solution 1 by separating the project into distinct Java classes (`ParkingLot`, `Vehicle`, `Ticket`) and introducing basic multi-zone pricing logic (Underground, Surface, Economy, and Plug-in stalls).
 
 * **Design Description:** Business logic was refactored out of the main loop into helper classes, allowing basic calculations to be invoked programmatically. Cross-zone terminal selection was introduced, allowing drivers to specify their parking zone.

@@ -4,6 +4,8 @@
 **Team Members:**
 * Ali Abdullah - 200518299
 * Abraham Omoregie - 200507536
+* Muhammad Shami - 200491628
+* Fairuz Nawar - 200515433
 
 ---
 

@@ -83,7 +83,7 @@ In accordance with the iterative engineering design process, multiple software a
 The initial design concept proposed a uniform (inflexible) Java application where user input, pricing logic, and spot tracking were combined within a single class using static methods. This solution focused exclusively on standard surface lot billing without distinguishing between parking zones or electrical plug usage.
 
 * **Design Description:** A single `Main` class handled terminal prompts, hard-coded fee calculations ($3.00/hour), and basic console output.
-* **Testing Evaluation & Rejection:** From a software testing perspective, this design was rejected due to high code coupling. Because business logic (rate calculations) was intertwined with direct user input/output (`Scanner` and `System.out.println`), writing isolated JUnit unit tests without triggering interactive console prompts was impossible. Furthermore, it failed to support cross-zone extensions or variable pricing tiers.
+* **Testing Evaluation & Rejection:** From a software testing perspective, this design was rejected due to high code coupling (testing perspective) because the price calculation code was directly mixed with different screen prompts. As a result, automated JUnit tests could not test the pricing rules in isolation without getting stuck waiting for a human to type inputs on the keyboard. Furthermore, it failed to support cross-zone extensions or variable pricing tiers.
 
 ### 3.2 Solution 2: Flexible Multi-Class Architecture (Updated Draft but Pre-MVC)
 The second iteration improved upon Solution 1 by separating the project into distinct Java classes (`ParkingLot`, `Vehicle`, `Ticket`) and introducing basic multi-zone pricing logic (Underground, Surface, Economy, and Plug-in stalls).

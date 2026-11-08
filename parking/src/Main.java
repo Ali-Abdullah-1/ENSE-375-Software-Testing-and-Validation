@@ -11,13 +11,14 @@ import view.TerminalView;
 
 public class Main 
 {
-  private static List<ParkingSlot> slots = new ArrayList<>();
-  private static List<Ticket> activeTickets = new ArrayList<>();
-  private static TerminalView view = new TerminalView();
-  private static ParkingController controller = new ParkingController();
+  private static final List<ParkingSlot> slots = new ArrayList<>();
+  private static final List<Ticket> activeTickets = new ArrayList<>();
+  private static final TerminalView view = new TerminalView();
+  private static final ParkingController controller = new ParkingController();
+  private static final Scanner scanner = new Scanner(System.in);
   
   public static void main( String[] args ) {
-    Scanner scanner = new Scanner(System.in);
+    
 
     slots.add(new ParkingSlot("UG-01", ZoneType.underground, false, 4));
     slots.add(new ParkingSlot("UG-02", ZoneType.underground, true, 4));
@@ -57,12 +58,24 @@ public class Main
         view.displayError("Invalid menu choice. Please select an option between 1 and 5.");
       }
     }
-
+    
     scanner.close();
+    
+  }
+
+  private static void printActiveTickets() {
+    System.out.println("\n--- Active Tickets ---");
+      for (int i = 0; i < activeTickets.size(); i++) {
+        Ticket t = activeTickets.get(i);
+        System.out.println((i + 1) + ". Ticket ID: " + t.getTicketId() +
+                                     " | Plate: " + t.getVehicle().getLicensePlate() +
+                                     " | Slot: " + t.getSlot().getSlotId() +
+                                     " | Current Duration: " + t.getDurationHours() + "h");
+      }
   }
 
   private static void issueNewTicket() {
-    Scanner scanner = new Scanner(System.in);
+    
 
     System.out.print("\nEnter License Plate (3-7 alphanumeric characters): ");
     String plateInput = scanner.nextLine();
@@ -82,7 +95,6 @@ public class Main
       System.out.print("Select slot number (1-" + slots.size() + "): ");
       int slotIdx = Integer.parseInt(scanner.nextLine()) - 1;
       if (slotIdx < 0 || slotIdx > slots.size()) {
-        scanner.close();
         throw new IllegalArgumentException("Invalid slot selection index.");
       }
       ParkingSlot selectedSlot = slots.get(slotIdx);
@@ -106,30 +118,23 @@ public class Main
       view.displayError(e.getMessage());
     }
 
-    scanner.close();
+    
   }
 
   private static void extendTicket() {
-    Scanner scanner = new Scanner(System.in);
+    
 
     if (activeTickets.isEmpty()) {
       view.displayError("No active parking tickets found to extend.");
     }
 
     try {
-      System.out.println("\n--- Active Tickets ---");
-      for (int i = 0; i < activeTickets.size(); i++) {
-        Ticket t = activeTickets.get(i);
-        System.out.println((i + 1) + ". Ticket ID: " + t.getTicketId() +
-                                     " | Plate: " + t.getVehicle().getLicensePlate() +
-                                     " | Slot: " + t.getSlot().getSlotId() +
-                                     " | Current Duration: " + t.getDurationHours() + "h");
-      }
+      printActiveTickets();
 
       System.out.print("Select ticket number to extend: ");
       int tIdx = Integer.parseInt(scanner.nextLine()) - 1;
       if (tIdx < 0 || tIdx >= activeTickets.size()) {
-        scanner.close();
+        
         throw new IllegalArgumentException("Invalid ticket selection index.");
       }
       Ticket selectedTicket = activeTickets.get(tIdx);
@@ -147,6 +152,42 @@ public class Main
       view.displayError(e.getMessage());
     }
 
-    scanner.close();
+    
+  }
+
+  private static void checkOut() {
+    if (activeTickets.isEmpty()) {
+      view.displayError("No active tickets available to checkout.");
+    }
+
+    try {
+      printActiveTickets();
+
+      System.out.print("Select ticket number to checkout: ");
+      int tIdx = Integer.parseInt(scanner.nextLine()) - 1;
+      if (tIdx < 0 || tIdx >= activeTickets.size()) {
+        throw new IllegalArgumentException("Invalid ticket selection index.");
+      }
+      Ticket selectedTicket = activeTickets.get(tIdx);
+
+      controller.releaseSlot(selectedTicket.getSlot());
+      activeTickets.remove(selectedTicket);
+      System.out.println("\n[SUCCESS] Slot " + selectedTicket.getSlot().getSlotId() + " is now released and set to EMPTY.");
+    } catch (NumberFormatException e) {
+      view.displayError("Please enter a valid numeric value.");
+    } catch (Exception e) {
+      view.displayError(e.getMessage());
+    }
+  }
+
+  private static void viewAllSlots() {
+    System.out.println("\n--- CURRENT PARKING SLOTS STATUS ---");
+    for (ParkingSlot s : slots) {
+      System.out.println("Slot ID: " + s.getSlotId() +
+                         " | Zone: " + s.getZoneType() +
+                         " | Plug-in: " + (s.hasElectricalPlug() ? "Yes" : "No") +
+                         " | Max Limit: " + s.getMaxDurationHours() + "h" +
+                         " | Status: " + s.getState());
+    }
   }
 }

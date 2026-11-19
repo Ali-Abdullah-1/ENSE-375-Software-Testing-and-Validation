@@ -22,7 +22,7 @@ public class Main {
   private static final ParkingController controller = new ParkingController();
 
   /**
-   * Starts the SPBS terminal application and runs the main menu loop until exit.
+   * Starts the terminal application and runs the main menu loop until exit.
    *
    * @param args command-line arguments (unused)
    */

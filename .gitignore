@@ -1,2 +1,5 @@
 target/
 docs
+settings.json
+*.class
+.vscode

@@ -5,13 +5,18 @@ import model.ParkingSlot;
 import model.Ticket;
 import model.Vehicle;
 
+/**
+ * Controller component of the Smart Parking Billing System MVC architecture.
+ * Coordinates parking fee calculations, ticket issuance, cross-zone duration
+ * extensions, and parking slot state transitions while enforcing zone duration caps.
+ */
 public class ParkingController {
   /**
-   * Calculates the parking fee based on zone, number of hours and plug usage
+   * Calculates the parking fee based on zone, number of hours and plug usage.
    * 
-   * @param zoneType the parking zone tier (underground, surface, plugin, economy, plugin)
+   * @param zoneType the parking zone tier (underground, surface, plugin, economy)
    * @param durationHours total duration in hours (must be > 0)
-   * @param usePlug true if using electrical plug
+   * @param usePlug {@code true} if using electrical plug
    * 
    * @return total calculated fee in dollars
    * 
@@ -40,6 +45,7 @@ public class ParkingController {
 
   /**
    * Creates new ticket for the given vehicle for a period of time and in the specified slot
+   * and marks the slot as occupied.
    * 
    * @param vehicle the vehicle to be parked
    * @param slot the slot where the vehicle will be parked
@@ -69,6 +75,7 @@ public class ParkingController {
 
   /**
    * Extends the duration of an existing ticket by specified number of additional hours
+   * and recalculates its fee.
    * 
    * @param ticket the ticket for which the duration is to be extended
    * @param additionalHours the number of hours to extend by (must be > 0)
@@ -95,7 +102,7 @@ public class ParkingController {
   }
 
   /**
-   * Sets the state of the given slot to empty
+   * Sets the state of the given slot to empty.
    * @param slot the slot to release
    */
   public void releaseSlot(ParkingSlot slot) {
